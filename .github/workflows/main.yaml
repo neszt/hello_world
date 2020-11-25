@@ -49,6 +49,8 @@ jobs:
           file: ./Dockerfile
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x
           push: true
+          build-args: |
+            SOURCE_BRANCH=${{ env.IMAGE_TAG }}
           tags: |
             neszt/hello_world:${{ env.IMAGE_TAG }}
             ghcr.io/neszt/hello_world:${{ env.IMAGE_TAG }}
