@@ -20,8 +20,8 @@ jobs:
       -
         name: Prepare image tag name
         run: |
-		  echo IMAGE_TAG=$(echo ${GITHUB_REF##*/} | sed 's/master/latest/') >> $GITHUB_ENV
-		  echo IMAGE_TAG=$(echo ${GITHUB_REF##*/} | sed 's/master/latest/')
+          echo IMAGE_TAG=$(echo ${GITHUB_REF##*/} | sed 's/master/latest/') >> $GITHUB_ENV
+          echo IMAGE_TAG=$(echo ${GITHUB_REF##*/} | sed 's/master/latest/')
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
