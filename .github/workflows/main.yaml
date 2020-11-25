@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+      - '[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   multi-registries:
@@ -15,6 +17,11 @@ jobs:
       -
         name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
+      -
+        name: Prepare image tag name
+        run: |
+		  echo IMAGE_TAG=$(echo ${GITHUB_REF##*/} | sed 's/master/latest/') >> $GITHUB_ENV
+		  echo IMAGE_TAG=$(echo ${GITHUB_REF##*/} | sed 's/master/latest/')
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -43,5 +50,5 @@ jobs:
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x
           push: true
           tags: |
-            neszt/hello_world:latest
-            ghcr.io/neszt/hello_world:latest
+            neszt/hello_world:${{ env.IMAGE_TAG }}
+            ghcr.io/neszt/hello_world:${{ env.IMAGE_TAG }}
