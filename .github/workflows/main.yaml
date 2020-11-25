@@ -12,6 +12,9 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
+        name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/}
+      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       -
