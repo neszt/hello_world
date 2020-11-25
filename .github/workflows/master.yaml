@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - '[0-9]+.[0-9]+'
 
 jobs:
   multi-registries:
@@ -45,6 +44,4 @@ jobs:
           push: true
           tags: |
             neszt/hello_world:latest
-            neszt/hello_world:1.0.0
             ghcr.io/neszt/hello_world:latest
-            ghcr.io/neszt/hello_world:1.0.0
