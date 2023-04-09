@@ -20,4 +20,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: perl -V
-      - run: perl -MPerl::Critic=critique -e 'my @c = critique({-severity => "harsh"}, shift); print @c ; exit (@c ? 1 : 0)' hello_world.pl
+      - run: perl -MPerl::Critic=critique -e "my @c = critique({-severity => 'harsh'}, shift); print @c ; exit (@c?1:0)" hello_world.pl
