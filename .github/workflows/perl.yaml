@@ -20,4 +20,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: perl -V
-      - run: perl -MPerl::Critic=critique -MData::Dumper -e "my @c = critique({-severity => 'harsh', -exclude => [Community::DiscouragedModules, Perl::Critic::Policy::Community::DiscouragedModules]}, shift); print Dumper(@c) ; print @c ; exit (@c?1:0)" hello_world.pl
+      - run: perl -MPerl::Critic=critique -MData::Dumper -e "my @c = critique({-severity => 'harsh', -exclude => ['Community::DiscouragedModules', 'Perl::Critic::Policy::Community::DiscouragedModules']}, shift); print Dumper(@c) ; print @c ; exit (@c?1:0)" hello_world.pl
