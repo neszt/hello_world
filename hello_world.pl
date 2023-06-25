@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use JSON::XS;
+use Cpanel::JSON::XS;
 
 sub main {
 
