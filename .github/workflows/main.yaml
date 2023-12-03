@@ -4,9 +4,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
   push:
-    branches:
-      - master
-      - '[0-9]+.[0-9]+'
+    tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
@@ -24,6 +22,9 @@ jobs:
         run: |
           echo IMAGE_TAG=$(echo ${GITHUB_REF##*/} | sed 's/master/latest/') >> $GITHUB_ENV
           echo IMAGE_TAG=$(echo ${GITHUB_REF##*/} | sed 's/master/latest/')
+          echo IMAGE_TAG_v1=${{ github.ref_name }}
+          echo IMAGE_TAG_v2=$GITHUB_REF_NAME
+          echo IMAGE_TAG_v3=${{env.GITHUB_REF_NAME}}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
